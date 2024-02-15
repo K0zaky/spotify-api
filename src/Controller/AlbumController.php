@@ -67,6 +67,28 @@ class AlbumController extends AbstractController
         }
     }
 
+    public function albumByUsuario(SerializerInterface $serializer, Request $request){
+        $usuarioId = $request->get("id");
+
+        $usuario = $this->getDoctrine()->getRepository(Usuario::class)
+        ->findOneBy(["id" => $usuarioId]);
+
+        $albums = $usuario->getAlbum();
+
+        if($request->isMethod("GET")){
+
+            $albums = $serializer->serialize(
+                $albums,
+                "json",
+                ["groups" => ["album"]]
+            );
+    
+            return new Response($albums);
+
+        }
+
+    }
+
 
     
 }

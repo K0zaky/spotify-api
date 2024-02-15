@@ -189,6 +189,12 @@ albumsAndCanciones: #Hecho
   path: /album/{id}/canciones
   controller: App\Controller\AlbumController::albumsAndCanciones
   methods: GET
+  
+
+albumByUsuario:
+  path: /usuario/{id}/album
+  controller: App\Controller\AlbumController::albumByUsuario
+  methods: GET
 
 
 #CALIDAD
